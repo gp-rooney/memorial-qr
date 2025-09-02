@@ -1,19 +1,36 @@
-// Purpose: Root layout with Tailwind container + Nav
-import "./globals.css";
+// Purpose: Root layout shell (header/nav/footer) shared by all pages. No globals.css import to avoid errors if you don't have it yet.
 import type { Metadata } from "next";
-import Nav from "@/components/Nav";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Memorial QR (Demo)",
-  description: "Scan → claim → view a memorial page",
+  title: "Memorial QR · Demo",
+  description: "Static demo of QR-linked memorial pages.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 text-gray-900">
-        <Nav />
-        <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
+      <body className="min-h-screen flex flex-col">
+        <header className="border-b">
+          <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+            <Link href="/" className="font-semibold">Memorial QR</Link>
+            <nav className="flex gap-4 text-sm">
+              <Link className="hover:underline" href="/q/DEMO123">Scan/Claim (demo)</Link>
+              <Link className="hover:underline" href="/m/jane-doe">Memorial</Link>
+              <Link className="hover:underline" href="/dashboard">Dashboard</Link>
+              <Link className="hover:underline" href="/partners">Partners</Link>
+              <Link className="hover:underline" href="/admin">Admin</Link>
+            </nav>
+          </div>
+        </header>
+
+        <main className="flex-1">{children}</main>
+
+        <footer className="border-t">
+          <div className="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-600">
+            © {new Date().getFullYear()} Memorial QR — Demo only. Privacy-first, unlisted by default.
+          </div>
+        </footer>
       </body>
     </html>
   );
