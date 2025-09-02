@@ -1,6 +1,7 @@
-// Purpose: Root layout shell (header/nav/footer) shared by all pages. No globals.css import to avoid errors if you don't have it yet.
+// Purpose: Root layout shell (header/nav/footer) shared by all pages.
 import type { Metadata } from "next";
 import Link from "next/link";
+import "./globals.css"; // Import your global styles
 
 export const metadata: Metadata = {
   title: "Memorial QR · Demo",

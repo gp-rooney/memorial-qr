@@ -1,28 +1,24 @@
-// Purpose: Redesigned homepage inspired by a clean, heartfelt aesthetic.
+// Purpose: Redesigned homepage with a modern, heartfelt aesthetic.
 import Link from "next/link";
-import {
-  HeartIcon,
-  PencilIcon,
-  QrCodeIcon,
-} from "@/components/icons";
+import { HeartIcon, PencilIcon, QrCodeIcon } from "@/components/icons";
 
 export default function HomePage() {
   return (
-    <div className="bg-white text-gray-800">
+    <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="text-center bg-gradient-to-br from-blue-50 to-gray-50 py-24 px-4">
+      <section className="text-center py-24 sm:py-32 px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl font-serif font-bold text-gray-900 leading-tight" style={{ fontFamily: "'Lora', serif" }}>
-            Eternal Legacies, One Scan at a Time
+          <h1 className="text-5xl md:text-6xl font-serif font-bold leading-tight">
+            Remembered, Always.
           </h1>
-          <p className="mt-4 text-lg text-gray-600" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-            Create a beautiful, lasting online memorial for your loved ones, linked by a simple QR code.
+          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+            Create a beautiful, lasting online memorial for your loved ones, linked by a simple QR code. A space to share stories, photos, and videos, keeping their memory alive for generations to come.
           </p>
-          <div className="mt-8 flex justify-center gap-4">
-            <Link href="/dashboard" className="px-6 py-3 rounded-full bg-rose-500 text-white font-semibold shadow-lg hover:bg-rose-600 transition-colors">
+          <div className="mt-10 flex justify-center gap-4">
+            <Link href="/dashboard" className="px-8 py-3 rounded-full bg-primary text-primary-foreground font-semibold shadow-lg hover:bg-primary/90 transition-colors">
               Create a Memorial
             </Link>
-            <Link href="/m/jane-doe" className="px-6 py-3 rounded-full bg-white border border-gray-300 text-gray-800 font-semibold hover:bg-gray-100 transition-colors">
+            <Link href="/m/jane-doe" className="px-8 py-3 rounded-full bg-secondary text-secondary-foreground font-semibold hover:bg-secondary/80 transition-colors">
               View a Demo
             </Link>
           </div>
@@ -30,83 +26,67 @@ export default function HomePage() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 sm:py-24 bg-secondary">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-serif font-semibold text-gray-900" style={{ fontFamily: "'Lora', serif" }}>How It Works</h2>
-          <div className="mt-12 grid gap-12 md:grid-cols-3">
-            <div className="flex flex-col items-center">
-              <div className="bg-blue-100 p-4 rounded-full">
-                <QrCodeIcon className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="mt-4 text-xl font-semibold text-gray-800">1. Get Your QR Code</h3>
-              <p className="mt-2 text-gray-600">Receive a unique QR code to place on a headstone, urn, or memorial plaque.</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="bg-rose-100 p-4 rounded-full">
-                <PencilIcon className="w-8 h-8 text-rose-600" />
-              </div>
-              <h3 className="mt-4 text-xl font-semibold text-gray-800">2. Create the Memorial Page</h3>
-              <p className="mt-2 text-gray-600">Easily build a beautiful tribute with photos, stories, and videos.</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="bg-green-100 p-4 rounded-full">
-                <HeartIcon className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="mt-4 text-xl font-semibold text-gray-800">3. Share Their Story</h3>
-              <p className="mt-2 text-gray-600">Share the page with family and friends, creating a collective space for remembrance.</p>
-            </div>
+          <h2 className="text-4xl font-serif font-semibold">A Lasting Tribute in Three Simple Steps</h2>
+          <p className="mt-4 text-muted-foreground max-w-3xl mx-auto">
+            We've made it easy to create a beautiful and enduring memorial that can be visited by anyone, anywhere.
+          </p>
+          <div className="mt-16 grid gap-12 md:grid-cols-3">
+            <HowItWorksStep
+              icon={<QrCodeIcon className="w-10 h-10 text-primary" />}
+              title="1. Receive Your QR Code"
+              description="You'll get a unique, durable QR code to place on a headstone, urn, or a special place of remembrance."
+            />
+            <HowItWorksStep
+              icon={<PencilIcon className="w-10 h-10 text-primary" />}
+              title="2. Create the Memorial"
+              description="Build a beautiful tribute page with photos, stories, and videos. Our tools make it simple and intuitive."
+            />
+            <HowItWorksStep
+              icon={<HeartIcon className="w-10 h-10 text-primary" />}
+              title="3. Share Their Legacy"
+              description="Share the page with family and friends, creating a collective space for remembrance and healing."
+            />
           </div>
         </div>
       </section>
 
       {/* Featured Memorials Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 sm:py-24">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-serif font-semibold text-gray-900" style={{ fontFamily: "'Lora', serif" }}>Featured Memorials</h2>
+          <h2 className="text-4xl font-serif font-semibold">Featured Memorials</h2>
+          <p className="mt-4 text-muted-foreground">Celebrating lives and legacies.</p>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {/* Example Memorial 1 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform">
-              <img src="https://images.unsplash.com/photo-1548535345-8c342f53cf08?q=80&w=200" alt="John Doe" className="w-full h-56 object-cover"/>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800">Johnathan Doe</h3>
-                <p className="mt-2 text-gray-600 italic">"A loving father, a devoted husband, and a friend to all. His laughter echoes in our hearts forever."</p>
-              </div>
-            </div>
-            {/* Example Memorial 2 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform">
-              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200" alt="Jane Smith" className="w-full h-56 object-cover"/>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800">Jane Smith</h3>
-                <p className="mt-2 text-gray-600 italic">"Her kindness was a beacon of light. She found beauty in everything and taught us to do the same."</p>
-              </div>
-            </div>
-            {/* Example Memorial 3 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform">
-              <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=200" alt="Eleanor Vance" className="w-full h-56 object-cover"/>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800">Eleanor Vance</h3>
-                <p className="mt-2 text-gray-600 italic">"An avid reader and traveler, her stories and wisdom enriched the lives of everyone she met."</p>
-              </div>
-            </div>
+            <MemorialCard
+              imageUrl="https://images.unsplash.com/photo-1548535345-8c342f53cf08?q=80&w=400"
+              name="Johnathan Doe"
+              quote="A loving father, a devoted husband, and a friend to all. His laughter echoes in our hearts forever."
+            />
+            <MemorialCard
+              imageUrl="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400"
+              name="Jane Smith"
+              quote="Her kindness was a beacon of light. She found beauty in everything and taught us to do the same."
+            />
+            <MemorialCard
+              imageUrl="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=400"
+              name="Eleanor Vance"
+              quote="An avid reader and traveler, her stories and wisdom enriched the lives of everyone she met."
+            />
           </div>
         </div>
       </section>
 
-      {/* A Place for Every Memory - Features Showcase */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-serif font-semibold text-gray-900 text-center" style={{ fontFamily: "'Lora', serif" }}>A Place for Every Memory</h2>
-          {/* This section can be built out with features when ready */}
-        </div>
-      </section>
-
-      {/* A Gentle Call to Action */}
-      <section className="bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 py-16 text-center">
-           <h2 className="text-3xl font-serif font-semibold text-gray-900" style={{ fontFamily: "'Lora', serif" }}>Preserve a Life Story Today</h2>
-          <div className="mt-6">
-             <Link href="/dashboard" className="px-6 py-3 rounded-full bg-rose-500 text-white font-semibold shadow-lg hover:bg-rose-600 transition-colors">
-              Get Started
+      {/* Call to Action Section */}
+      <section className="bg-primary/10">
+        <div className="max-w-4xl mx-auto px-4 py-20 text-center">
+           <h2 className="text-4xl font-serif font-semibold">Preserve a Life Story Today</h2>
+           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+             Join thousands of others in creating a beautiful, lasting tribute to the people who have touched your life.
+           </p>
+          <div className="mt-8">
+             <Link href="/dashboard" className="px-8 py-3 rounded-full bg-primary text-primary-foreground font-semibold shadow-lg hover:bg-primary/90 transition-colors">
+              Get Started for Free
             </Link>
           </div>
         </div>
@@ -115,13 +95,28 @@ export default function HomePage() {
   );
 }
 
-// A simple reusable component for the features section
-function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
+// Reusable component for the "How It Works" steps
+function HowItWorksStep({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
   return (
-    <div className="text-center p-6 border border-gray-200 rounded-lg">
-      <div className="flex justify-center">{icon}</div>
-      <h3 className="mt-4 text-lg font-semibold text-gray-800">{title}</h3>
-      <p className="mt-2 text-sm text-gray-600">{description}</p>
+    <div className="flex flex-col items-center">
+      <div className="bg-secondary p-4 rounded-full border border-border">
+        {icon}
+      </div>
+      <h3 className="mt-6 text-xl font-semibold">{title}</h3>
+      <p className="mt-2 text-muted-foreground">{description}</p>
+    </div>
+  );
+}
+
+// Reusable component for the memorial cards
+function MemorialCard({ imageUrl, name, quote }: { imageUrl: string; name: string; quote: string }) {
+  return (
+    <div className="bg-secondary rounded-lg overflow-hidden border border-border transform transition-transform hover:-translate-y-2">
+      <img src={imageUrl} alt={name} className="w-full h-64 object-cover"/>
+      <div className="p-6">
+        <h3 className="text-xl font-semibold">{name}</h3>
+        <p className="mt-2 text-muted-foreground italic">"{quote}"</p>
+      </div>
     </div>
   );
 }
